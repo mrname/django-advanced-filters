@@ -114,7 +114,7 @@ var OperatorHandlers = function($) {
 			if (!value.val() == "null") {
 				value.val("");
 			}
-			op.val("iexact").change();
+
 			self.initialize_select2(elm);
 		}
 	};
@@ -143,10 +143,11 @@ var OperatorHandlers = function($) {
 				if ($(this).val() != before_change) self.field_selected(this);
 				$(this).data('pre_change', $(this).val());
 			}).change();
-			self.initialize_select2(this)
+			if ($(this).val() != "_OR") {
+				self.initialize_select2(this)
+			}
 		});
 		self.field_selected($('.form-row select.query-field').first());
-
 	};
 
 	self.destroy = function() {
